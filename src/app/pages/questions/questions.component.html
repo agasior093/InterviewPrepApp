@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <app-questions-list [questions]="questions" (categoryChange)="onCategoryChange($event)"
+        (questionsFilterChange)="onQuestionsFilterChange($event)"></app-questions-list>
+    </div>
+    <div class="col-10">
+      <app-questions-content [questions]="filteredQuestions" [category]="selectedCategory"></app-questions-content>
+    </div>
+  </div>
+</div>

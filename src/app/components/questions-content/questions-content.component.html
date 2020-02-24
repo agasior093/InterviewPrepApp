@@ -1,0 +1,19 @@
+<div class="card-header" *ngIf="questions.length > 0">
+  {{category}}
+</div>
+<div class="card" *ngFor="let question of questions">
+  <div class="card-body">
+    <h5 class="text-warning"> {{question.title}}</h5>
+    <pre class="text-muted"> {{question.content}}</pre>
+
+    <pre>
+        <code>
+            lorem ipsum
+             lorem ipsum
+            lorem ipsum
+        </code>
+    </pre>
+
+    <pre class="text-muted"><li class="list-group-item">{{question.answer}}</li></pre>
+  </div>
+</div>
