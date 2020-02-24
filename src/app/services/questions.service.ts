@@ -16,12 +16,12 @@ export class QuestionsService {
       questions.push({
         title: 'Pytanie ' + i,
         category: 'Category ' + i % 3,
-        content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
+        content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
         answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry'
       });
     }
 
-    return this.getRealQuestions();
+    return questions;
   }
 
   public getRealQuestions(): Question[] {
