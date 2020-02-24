@@ -1,4 +1,4 @@
-<ngb-accordion #acc="ngbAccordion" (panelChange)="filterQuestions($event)">
+<ngb-accordion #acc="ngbAccordion" [closeOthers]="true" (panelChange)="filterQuestions($event)">
   <ngb-panel *ngFor="let category of distinctCategories(); let i = index" id="{{category}}" title={{category}}>
     <ng-template ngbPanelContent>
       <ul class="navbar-nav mr-auto">
@@ -11,3 +11,5 @@
     </ng-template>
   </ngb-panel>
 </ngb-accordion>
+
+

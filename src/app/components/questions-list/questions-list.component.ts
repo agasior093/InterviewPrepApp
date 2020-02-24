@@ -15,6 +15,7 @@ export class QuestionsListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
   distinctCategories(): Set<string> {
@@ -34,6 +35,7 @@ export class QuestionsListComponent implements OnInit {
       const category = $event.panelId;
       this.categoryChange.emit(category);
       this.questionsFilterChange.emit(this.questions.filter(question => question.category === category));
+      window.scroll(0, 0);
     }
   }
 
