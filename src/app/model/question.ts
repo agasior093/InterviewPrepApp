@@ -4,4 +4,5 @@ export interface Question {
   category?: string;
   difficulty?: string;
   answer?: string;
+  revealAnswer?: boolean;
 }

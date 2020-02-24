@@ -12,6 +12,7 @@ import { QuestionsComponent } from './pages/questions/questions.component';
 import { QuestionsListComponent } from './components/questions-list/questions-list.component';
 import { QuestionsContentComponent } from './components/questions-content/questions-content.component';
 
+import { HighlightModule } from 'ngx-highlightjs';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { QuestionsContentComponent } from './components/questions-content/questi
     FormsModule,
     AppRoutingModule,
     FontAwesomeModule,
-    NgbModule
+    NgbModule,
+    HighlightModule
   ],
   providers: [],
   bootstrap: [AppComponent]

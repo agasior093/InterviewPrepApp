@@ -3,17 +3,9 @@
 </div>
 <div class="card" *ngFor="let question of questions">
   <div class="card-body">
-    <h5 class="text-warning"> {{question.title}}</h5>
+    <h6 class="text-warning"> {{question.title}}</h6>
     <pre class="text-muted"> {{question.content}}</pre>
-
-    <pre>
-        <code>
-            lorem ipsum
-             lorem ipsum
-            lorem ipsum
-        </code>
-    </pre>
-
-    <pre class="text-muted"><li class="list-group-item">{{question.answer}}</li></pre>
+    <pre class="text-muted" *ngIf="!question.revealAnswer"><li class="list-group-item">{{question.answer}}</li></pre>
+    <!-- <button class="btn btn-secondary">Reveal answer</button> -->
   </div>
 </div>

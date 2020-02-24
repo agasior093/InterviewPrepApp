@@ -19,7 +19,7 @@ export class QuestionsContentComponent implements OnInit {
 
   codeBlock: string = 'public class Base \{\n private int fun() \{ return 0 }';
 
-
+  languages = ['java']
 
 
 
