@@ -15,7 +15,7 @@ export class QuestionsListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
+    this.filterQuestions({nextState: true, panelId: 'Category 1'}); //JUST FOR TESTING
   }
 
   distinctCategories(): Set<string> {
@@ -31,6 +31,7 @@ export class QuestionsListComponent implements OnInit {
   }
 
   filterQuestions($event) {
+    console.log($event)
     if ($event.nextState) {
       const category = $event.panelId;
       this.categoryChange.emit(category);

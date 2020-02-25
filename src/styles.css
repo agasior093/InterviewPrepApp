@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import '~highlight.js/styles/github.css';
+@import 'bootstrap.css';
+
+
+
+
+.hljs {
+  margin: 0 1em;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 4px;
+  transition: border ease 1s;
+
+  color: #A9B7C6;
+  background-color: #313335;
+}
+
+.hljs-keyword {
+  color: #CC7832;
+}
+
+.hljs-title {
+  color: #FFC66D;
+}
+
+.hljs-comment {
+  color: #629755;
+}
+
+.hljs-meta {
+  color: #BBB529;
+}
+
+.hljs-number {
+  color: #6897BB;
+}
+
+.hljs-string {
+  color: #6A8759;
+}

@@ -8,6 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class QuestionsContentComponent implements OnInit {
 
+  readonly languages = ['java'];
+
   @Input() questions: Question[] = [];
   @Input() category: string;
 
@@ -16,10 +18,9 @@ export class QuestionsContentComponent implements OnInit {
   ngOnInit() {
   }
 
-
-  codeBlock: string = 'public class Base \{\n private int fun() \{ return 0 }';
-
-  languages = ['java']
+  toggleAnswer(question: Question, param: boolean) {
+    question.revealAnswer = param;
+  }
 
 
 

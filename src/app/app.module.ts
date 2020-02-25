@@ -12,7 +12,12 @@ import { QuestionsComponent } from './pages/questions/questions.component';
 import { QuestionsListComponent } from './components/questions-list/questions-list.component';
 import { QuestionsContentComponent } from './components/questions-content/questions-content.component';
 
-import { HighlightModule } from 'ngx-highlightjs';
+import {
+  HighlightModule,
+  HIGHLIGHT_OPTIONS,
+  HighlightOptions
+} from "ngx-highlightjs";
+
 
 @NgModule({
   declarations: [
@@ -23,6 +28,7 @@ import { HighlightModule } from 'ngx-highlightjs';
     QuestionsContentComponent
   ],
   imports: [
+
     BrowserModule,
     FormsModule,
     AppRoutingModule,
@@ -30,7 +36,14 @@ import { HighlightModule } from 'ngx-highlightjs';
     NgbModule,
     HighlightModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: <HighlightOptions>{
+        lineNumbers: true
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

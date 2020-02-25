@@ -5,7 +5,8 @@
   <div class="card-body">
     <h6 class="text-warning"> {{question.title}}</h6>
     <pre class="text-muted"> {{question.content}}</pre>
-    <pre class="text-muted" *ngIf="!question.revealAnswer"><li class="list-group-item">{{question.answer}}</li></pre>
-    <!-- <button class="btn btn-secondary">Reveal answer</button> -->
+    <pre *ngIf="question.code"><code [highlight]="question.code" [languages]="languages" [lineNumbers]="true"></code></pre>
+    <button class ="btn btn-secondary" *ngIf="!question.revealAnswer" (click)="toggleAnswer(question, true)">Show answer</button>
+    <pre class="text-muted" *ngIf="question.revealAnswer"><li class="list-group-item"><button class ="btn btn-secondary" (click)="toggleAnswer(question, false)">Hide answer</button> {{question.answer}}</li></pre>
   </div>
 </div>

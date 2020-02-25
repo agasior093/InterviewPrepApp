@@ -21,7 +21,7 @@ export class QuestionsService {
       });
     }
 
-    return questions;
+    return this.getRealQuestions();
   }
 
   public getRealQuestions(): Question[] {
@@ -73,8 +73,35 @@ export class QuestionsService {
         content: '',
         category: 'Memory model',
         answer: ''
+      },
+      {
+        title: '#1',
+        content: 'Will this run?',
+        category: 'Coding questions',
+        code: this.block1,
+        answer: 'No, method is static and it cannot use this'
+      },
+      {
+        title: '#2',
+        content: 'What will be the outcome of this?',
+        category: 'Coding questions',
+        code: this.block2,
+        answer: 'true and 1'
       }
     ];
   }
+
+  block1 = `  // Will this run?
+  @SpringBootApplication
+  public static void main(String... args) {
+    SpringApplication.run(this, args);
+  }
+  `
+
+  block2 = `  public void function() {
+    int i = 0;
+    System.out.println(true || (i++ == 0));
+    System.out.println(i);
+  }`;
 }
 
