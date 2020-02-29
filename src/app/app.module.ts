@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,12 +12,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { QuestionsComponent } from './pages/questions/questions.component';
 import { QuestionsListComponent } from './components/questions-list/questions-list.component';
 import { QuestionsContentComponent } from './components/questions-content/questions-content.component';
+import { TuiModule } from 'ngx-tui-editor';
 
 import {
   HighlightModule,
   HIGHLIGHT_OPTIONS,
   HighlightOptions
 } from "ngx-highlightjs";
+import { NewQuestionComponent } from './components/new-question/new-question.component';
 
 
 @NgModule({
@@ -25,7 +28,8 @@ import {
     NavbarComponent,
     QuestionsComponent,
     QuestionsListComponent,
-    QuestionsContentComponent
+    QuestionsContentComponent,
+    NewQuestionComponent
   ],
   imports: [
 
@@ -34,7 +38,9 @@ import {
     AppRoutingModule,
     FontAwesomeModule,
     NgbModule,
-    HighlightModule
+    HighlightModule,
+    TuiModule,
+    HttpClientModule
   ],
   providers: [
     {
