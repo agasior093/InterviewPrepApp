@@ -27,8 +27,10 @@
     "highlight.js": "latest",
     "highlightjs-line-numbers.js": "^2.7.0",
     "ngx-highlightjs": "^4.0.2",
+    "ngx-tui-editor": "^0.3.4",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
+    "tui-editor": "^1.4.10",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
