@@ -1,0 +1,10 @@
+<div class="card-header" *ngIf="questions.length > 0">
+  </div>
+  <div class="card" *ngFor="let question of questions">
+    <div class="card-body">
+      <pre class="text-muted"> {{question.content | language : 'typescript' | markdown}}</pre>
+      <button class ="btn btn-secondary" *ngIf="!question.revealAnswer" (click)="toggleAnswer(question, true)">Show answer</button>
+      <pre class="text-muted" *ngIf="question.revealAnswer"><li class="list-group-item"><button class ="btn btn-secondary" (click)="toggleAnswer(question, false)">Hide answer</button> {{question.answer}}</li></pre>
+    </div>
+  </div>
+  

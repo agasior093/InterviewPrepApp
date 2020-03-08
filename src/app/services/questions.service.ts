@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Question } from '../model/question';
 
 @Injectable({
@@ -7,7 +7,15 @@ import { Question } from '../model/question';
 })
 export class QuestionsService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
+  public getAllQuestions() {
+    return this.http.get<any>('http://localhost:8080/question/query', this.httpOptions);
+  }
 
   public getQuestions(): Question[] {
     const questions: Question[] = [];

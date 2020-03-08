@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TuiService } from 'ngx-tui-editor';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { QuestionsService } from 'src/app/services/questions.service';
 
 @Component({
   selector: 'app-new-question',
@@ -9,7 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class NewQuestionComponent implements OnInit {
 
-  constructor(private editorService: TuiService, private http: HttpClient) { }
+  constructor(private editorService: TuiService) { }
 
   options: {
     initialValue: `# Title of Project` ,
@@ -29,6 +30,6 @@ export class NewQuestionComponent implements OnInit {
   saveQuestion() {
     const questionInMarkdown = this.editorService.getMarkdown();
     console.log(JSON.stringify(questionInMarkdown));
-    return this.http.post<any>('URL', questionInMarkdown, this.httpOptions);
+    return 0;
   }
 }
