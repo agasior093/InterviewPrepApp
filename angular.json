@@ -25,7 +25,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/prismjs/themes/prism-dracula.css",
+              "node_modules/prismjs/themes/prism-tomorrow.css",
               "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css"
             ],
             "scripts": [

@@ -22,6 +22,7 @@ import {
 } from 'ngx-highlightjs';
 import { NewQuestionComponent } from './components/new-question/new-question.component';
 import { QuestionViewComponent } from './components/question-view/question-view.component';
+import { TagSubmenuComponent } from './components/tag-submenu/tag-submenu.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { QuestionViewComponent } from './components/question-view/question-view.
     QuestionsListComponent,
     QuestionsContentComponent,
     NewQuestionComponent,
-    QuestionViewComponent
+    QuestionViewComponent,
+    TagSubmenuComponent
   ],
   imports: [
     MarkdownModule.forRoot(),
