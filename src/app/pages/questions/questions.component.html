@@ -1,11 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-2 sticky-menu">
-      <app-questions-list [questions]="questions" (categoryChange)="onCategoryChange($event)"
-        (questionsFilterChange)="onQuestionsFilterChange($event)"></app-questions-list>
+      <app-tag-submenu ></app-tag-submenu>
     </div>
     <div class="col-10">
-        <app-questions-content [questions]="filteredQuestions" [category]="selectedCategory"></app-questions-content>
+        <app-question-view></app-question-view>
     </div>
   </div>
 </div>

@@ -13,13 +13,16 @@ import { QuestionsComponent } from './pages/questions/questions.component';
 import { QuestionsListComponent } from './components/questions-list/questions-list.component';
 import { QuestionsContentComponent } from './components/questions-content/questions-content.component';
 import { TuiModule } from 'ngx-tui-editor';
+import { MarkdownModule } from 'ngx-markdown';
 
 import {
   HighlightModule,
   HIGHLIGHT_OPTIONS,
   HighlightOptions
-} from "ngx-highlightjs";
+} from 'ngx-highlightjs';
 import { NewQuestionComponent } from './components/new-question/new-question.component';
+import { QuestionViewComponent } from './components/question-view/question-view.component';
+import { TagSubmenuComponent } from './components/tag-submenu/tag-submenu.component';
 
 
 @NgModule({
@@ -29,10 +32,12 @@ import { NewQuestionComponent } from './components/new-question/new-question.com
     QuestionsComponent,
     QuestionsListComponent,
     QuestionsContentComponent,
-    NewQuestionComponent
+    NewQuestionComponent,
+    QuestionViewComponent,
+    TagSubmenuComponent
   ],
   imports: [
-
+    MarkdownModule.forRoot(),
     BrowserModule,
     FormsModule,
     AppRoutingModule,
@@ -45,9 +50,9 @@ import { NewQuestionComponent } from './components/new-question/new-question.com
   providers: [
     {
       provide: HIGHLIGHT_OPTIONS,
-      useValue: <HighlightOptions>{
+      useValue:  {
         lineNumbers: true
-      }
+      } as HighlightOptions
     }
   ],
   bootstrap: [AppComponent]
