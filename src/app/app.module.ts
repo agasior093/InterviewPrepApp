@@ -15,15 +15,9 @@ import { QuestionsContentComponent } from './components/questions-content/questi
 import { TuiModule } from 'ngx-tui-editor';
 import { MarkdownModule } from 'ngx-markdown';
 
-import {
-  HighlightModule,
-  HIGHLIGHT_OPTIONS,
-  HighlightOptions
-} from 'ngx-highlightjs';
 import { NewQuestionComponent } from './components/new-question/new-question.component';
 import { QuestionViewComponent } from './components/question-view/question-view.component';
 import { TagSubmenuComponent } from './components/tag-submenu/tag-submenu.component';
-
 
 @NgModule({
   declarations: [
@@ -43,17 +37,11 @@ import { TagSubmenuComponent } from './components/tag-submenu/tag-submenu.compon
     AppRoutingModule,
     FontAwesomeModule,
     NgbModule,
-    HighlightModule,
     TuiModule,
     HttpClientModule
   ],
   providers: [
-    {
-      provide: HIGHLIGHT_OPTIONS,
-      useValue:  {
-        lineNumbers: true
-      } as HighlightOptions
-    }
+
   ],
   bootstrap: [AppComponent]
 })

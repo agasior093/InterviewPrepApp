@@ -10,26 +10,15 @@ import { QuestionsService } from 'src/app/services/questions.service';
 })
 export class NewQuestionComponent implements OnInit {
 
-  constructor(private editorService: TuiService) { }
-
-  options: {
-    initialValue: `# Title of Project` ,
-    initialEditType: 'markdown',
-    previewStyle: 'vertical',
-    height: 'auto',
-    minHeight: '500px'
-  };
-
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  constructor(private questionsService: QuestionsService, private editorService: TuiService) { }
 
   ngOnInit() {
   }
 
   saveQuestion() {
     const questionInMarkdown = this.editorService.getMarkdown();
-    console.log(JSON.stringify(questionInMarkdown));
-    return 0;
+    this.questionsService.saveQuestion({content: questionInMarkdown, answer: 'test', tags: ['test']}).subscribe(res => {
+
+    })
   }
 }
