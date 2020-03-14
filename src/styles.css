@@ -27,7 +27,6 @@
 }
 
 .te-toolbar-section {
-  /* border-bottom: 1px solid #cc7832 !important; */
   border-bottom: none !important;
 }
 
@@ -49,17 +48,14 @@
   width: 13px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background: #555;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #f1f1f1;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #888;
 }
@@ -92,6 +88,7 @@
 .tui-popup-body {
   background-color: #4e4d4d !important;
 }
+
 .tui-editor-popup .tui-popup-body label {
   color: white !important;
 }
@@ -116,11 +113,9 @@
   background-color: #777 !important;
 }
 
-
 .dropdown-item.active, .dropdown-item:active {
   background-color: #cc7832 !important;
 }
-
 
 .dropdown-item:hover  {
   background-color: #cc7832 !important;
