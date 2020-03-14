@@ -8,6 +8,11 @@
   color: #a9b7c6 !important;
 }
 
+.te-ww-container {
+  background-color: #303030 !important;
+  color: #a9b7c6 !important;
+}
+
 .CodeMirror-cursor {
   border-left: 1px solid #a9b7c6 !important;
 }
@@ -18,68 +23,66 @@
 }
 
 .tui-editor-defaultUI-toolbar {
-  background-color: #303030 !important;
+  background-color: #2d2d2d !important;
 }
 
 .te-toolbar-section {
-  border-bottom: 1px solid #cc7832 !important;
-}
-
-.tui-toolbar-divider {
-  background-color: #cc7832 !important;
+  /* border-bottom: 1px solid #cc7832 !important; */
+  border-bottom: none !important;
 }
 
 .te-toolbar-section button {
   background-color: #a9b7c6 !important;
 }
 
-.tui-table {
-  display: none !important;
-}
-
-.tui-heading {
-  display: none !important;
-}
-
-.tui-quote {
-  display: none !important;
-}
-
-.tui-hrline {
-  display: none !important;
-}
-
-.tui-task {
-  display: none !important;
-}
-
-.tui-indent {
-  display: none !important;
-}
-
-.tui-outdent {
-  display: none !important;
-}
-
-.tui-toolbar-divider {
-  display: none !important;
-}
-
 .te-md-splitter {
-  border: 0.5px solid #cc7832 !important;
+  border: 0.1px solid black !important;
 }
 
 .tui-editor-defaultUI {
-  border: 1px solid #cc7832 !important;
+  border: 0.5px solid #cc7832 !important;
+  border-radius: 5px !important;
+  overflow: hidden;
 }
 
-.te-mode-switch-section {
-  display: none !important;
+::-webkit-scrollbar {
+  width: 13px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #555;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #f1f1f1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
 }
 
 .tui-popup-header {
   background-color: #2d2d2d !important;
   border-bottom: 1px solid #cc7832 !important;
+}
+
+.te-mode-switch-section {
+  background-color: #2d2d2d !important;
+  border-top: 1px solid #181818 !important;
+}
+
+.tui-editor-defaultUI .te-switch-button.active {
+  background-color: #cc7832 !important;
+  color: white !important;
+}
+
+.tui-editor-defaultUI .te-switch-button {
+  background-color: #555 !important;
+  color: white !important;
+  border: none !important;
 }
 
 .tui-popup-header .tui-popup-title {
@@ -94,9 +97,9 @@
 }
 
 .tui-popup-wrapper {
-  -webkit-box-shadow: 5px 5px 20px 10px rgba(78,77,77,0.7);
--moz-box-shadow: 5px 5px 20px 10px rgba(78,77,77,0.7);
-box-shadow: 5px 5px 20px 10px rgba(78,77,77,0.7);
+  -webkit-box-shadow: 5px 5px 20px 10px rgba(78, 77, 77, 0.7);
+  -moz-box-shadow: 5px 5px 20px 10px rgba(78, 77, 77, 0.7);
+  box-shadow: 5px 5px 20px 10px rgba(78, 77, 77, 0.7);
   border: none !important;
 }
 
@@ -112,3 +115,14 @@ box-shadow: 5px 5px 20px 10px rgba(78,77,77,0.7);
   color: white !important;
   background-color: #777 !important;
 }
+
+
+.dropdown-item.active, .dropdown-item:active {
+  background-color: #cc7832 !important;
+}
+
+
+.dropdown-item:hover  {
+  background-color: #cc7832 !important;
+}
+

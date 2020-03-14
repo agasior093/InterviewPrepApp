@@ -1,4 +1,21 @@
 <div class="container">
-    <tui-editor></tui-editor>
+    <app-editor></app-editor>
+  <div class="col-sm-1 header">Tags</div>
+    <div class="container">
+      <div class="row header-left">
+        <div class="col-2">
+          <app-autocomplete [items]="tags" (outputItemsChanged)="getSelectedTags($event)"></app-autocomplete>
+        </div>
+        <div class="col-10">
+          <h5><span *ngFor="let tag of selectedTags; let i = index" class="badge badge-secondary">
+            {{tag}}
+            <button type="button" class="close" aria-label="Dismiss" (click)="deleteTag(i)">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </span></h5>
+         </div>
+      </div>
+
+
     <button class = "btn btn-warning" (click)="saveQuestion()" style="margin-top: 5px">Save</button>
 </div>
