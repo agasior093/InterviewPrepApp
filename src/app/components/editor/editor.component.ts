@@ -5,65 +5,90 @@ import Editor from 'tui-editor';
   selector: 'app-editor',
   encapsulation: ViewEncapsulation.None,
   styleUrls: [
-      './editor.component.css',
+    './editor.component.css',
   ],
   templateUrl: './editor.component.html',
 })
 export class EditorComponent implements OnInit, AfterViewInit {
-  @ViewChild('question', {static: false})
-  questionEditor: ElementRef;
-
-  @ViewChild('answer', {static: false})
-  answerEditor: ElementRef;
 
   @Output() questionMarkdown = new EventEmitter<string>();
   @Output() answerMarkdown = new EventEmitter<string>();
 
-  editor: any = {};
+  @ViewChild('question', { static: false })
+  private questionEditorView: ElementRef;
 
-  defaultId = 'ngx-editor-default';
+  @ViewChild('answer', { static: false })
+  private answerEditorView: ElementRef;
 
-  options = {
-    toolbarItems: [
-      'bold',
-      'italic',
-      'strike',
-      'ul',
-      'ol',
-      'image',
-      'link',
-      'code',
-      'codeblock'
-    ]
-  };
+  private questionEditor;
+  private answerEditor;
 
-  constructor() {}
-  ngOnInit()  {}
+  private readonly toolbarItems = [
+    'bold',
+    'italic',
+    'strike',
+    'ul',
+    'ol',
+    'image',
+    'link',
+    'code',
+    'codeblock'
+  ];
+
+  public clearMarkdowns() {
+    this.answerEditor.setMarkdown('');
+    this.questionEditor.setMarkdown('');
+  }
+
+  constructor() { }
+
+  ngOnInit() { }
 
   ngAfterViewInit() {
-    this.initEditors();
+    this.initEditors(this.toolbarItems);
+  }
+
+  onQuestionMarkdownChange() {
+    if (this.questionEditor) {
+      this.questionMarkdown.emit(this.questionEditor.getMarkdown());
+    }
+  }
+
+  onAnswerMarkdownChange() {
+    if (this.answerEditor) {
+      this.answerMarkdown.emit(this.answerEditor.getMarkdown());
+    }
   }
 
   private createEditor(options: any): any {
-    const id = options.editorId || this.defaultId;
-    this.editor[id] = Editor.factory(Object.assign({
+    return Editor.factory(Object.assign({
       el: document.querySelector('.ngx-tui-editor'),
       previewStyle: 'vertical'
     },
       options));
   }
 
-  private async initEditors() {
-    this.editor = await this.createEditor({
-        ...this.options,
-        el: this.questionEditor.nativeElement,
+  private initEditors(toolbarItems: string[]) {
+    this.questionEditor = this.createEditor({
+      ...{
+        toolbarItems,
+        events: {
+          change: () => this.onQuestionMarkdownChange()
+        },
+      },
+      el: this.questionEditorView.nativeElement,
     });
 
 
-    this.editor = await this.createEditor({
-      ...this.options,
-      el: this.answerEditor.nativeElement,
-  });
-}
+    this.answerEditor = this.createEditor({
+      ...{
+        toolbarItems,
+        events: {
+          change: () => this.onAnswerMarkdownChange()
+        },
+      },
+      el: this.answerEditorView.nativeElement,
+    });
+  }
 
 }

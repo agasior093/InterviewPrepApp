@@ -27,7 +27,7 @@ export class AutocompleteComponent {
 
     return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
       map(term => (term === '' ? this.items
-        : this.items.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 10))
+        : this.items.filter(v => v && v.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 10))
     );
   }
 

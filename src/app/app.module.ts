@@ -20,6 +20,7 @@ import { QuestionViewComponent } from './components/question-view/question-view.
 import { TagSubmenuComponent } from './components/tag-submenu/tag-submenu.component';
 import { EditorComponent } from './components/editor/editor.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AutocompleteComponent } from './components/autocomplete/autocomplete.co
     QuestionViewComponent,
     TagSubmenuComponent,
     EditorComponent,
-    AutocompleteComponent
+    AutocompleteComponent,
+    LoaderComponent
   ],
   imports: [
     MarkdownModule.forRoot(),
