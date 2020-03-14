@@ -3,8 +3,6 @@ import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subject, merge } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
 
-
-
 @Component({
   selector: 'app-autocomplete',
   templateUrl: './autocomplete.component.html',
