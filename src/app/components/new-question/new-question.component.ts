@@ -65,6 +65,7 @@ export class NewQuestionComponent implements OnInit {
       this.messages = { type: 'success', content: this.parseSuccess(payload) };
       this.loading = false;
       this.editor.clearMarkdowns();
+      this.selectedTags = [];
     }, err => {
       this.messages = { type: 'danger', content: this.parseErrors(err) };
       this.loading = false;
