@@ -21,6 +21,7 @@ import { TagSubmenuComponent } from './components/tag-submenu/tag-submenu.compon
 import { EditorComponent } from './components/editor/editor.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { QuestionsService } from './services/questions.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     HttpClientModule
   ],
   providers: [
-
+    QuestionsService
   ],
   bootstrap: [AppComponent]
 })

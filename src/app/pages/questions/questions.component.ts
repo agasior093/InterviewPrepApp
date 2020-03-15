@@ -1,6 +1,7 @@
 import { Question } from './../../model/question';
 import { QuestionsService } from './../../services/questions.service';
 import { Component, OnInit } from '@angular/core';
+import { Tag } from 'src/app/model/tag';
 
 @Component({
   selector: 'app-questions',
@@ -11,19 +12,17 @@ export class QuestionsComponent implements OnInit {
 
   questions: Question[];
   selectedCategory: string;
-  filteredQuestions: Question[] = [];
+  tagsToFilterByQuestions: Set<string>;
 
-  constructor(private questionsService: QuestionsService) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.questionsService.getAllQuestions().subscribe(payload => this.questions = payload);
+  ngOnInit() { }
+
+  onTagsFilterChange($event: Set<string>) {
+    this.tagsToFilterByQuestions = $event;
   }
 
-  onQuestionsFilterChange($event) {
-    this.filteredQuestions = $event;
-  }
-
-  onCategoryChange($event) {
+  onCategoryChange($event: string) {
     this.selectedCategory = $event;
   }
 }

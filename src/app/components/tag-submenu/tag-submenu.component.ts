@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { TagService } from 'src/app/services/tag.service';
 import { Tag } from 'src/app/model/tag';
 
@@ -8,13 +8,27 @@ import { Tag } from 'src/app/model/tag';
   styleUrls: ['./tag-submenu.component.css']
 })
 export class TagSubmenuComponent implements OnInit {
-
   tags: Tag[] = [];
+  tagsToFilterBy: Set<string>;
 
-  constructor(private tagService: TagService) { }
+  @Output() tagsToFilterByChanged = new EventEmitter<Set<string>>();
+
+  constructor(private tagService: TagService) {}
 
   ngOnInit() {
-    this.tagService.getAllTags().subscribe(payload => this.tags = payload);
+    this.tagService.getAllTags().subscribe(payload => (this.tags = payload));
   }
 
+  filterQuestions(tag: Tag) {
+    if (!this.tagsToFilterBy)  {
+      this.tagsToFilterBy = new Set<string>();
+      this.tagsToFilterBy.add(tag.value);
+    } else {
+      this.tagsToFilterBy.has(tag.value)
+      ? this.tagsToFilterBy.delete(tag.value)
+      : this.tagsToFilterBy.add(tag.value);
+    }
+
+    this.tagsToFilterByChanged.emit(this.tagsToFilterBy);
+  }
 }
