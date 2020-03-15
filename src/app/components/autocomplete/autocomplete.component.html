@@ -1,0 +1,3 @@
+<input id="typeahead-focus" type="text" class="form-control input-xs" [(ngModel)]="currentItem" [ngbTypeahead]="search"
+  (focus)="focus$.next($event.target.value)" (click)="click$.next($event.target.value)" #instance="ngbTypeahead"
+  (keyup)="onKeyUp($event)" (blur)="onBlur()" placeholder="java; spring; junior..." />

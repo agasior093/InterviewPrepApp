@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { TuiService } from 'ngx-tui-editor';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { EditorComponent } from './../editor/editor.component';
+import { CreateQuestionRequest } from './../../model/createQuestionRequest';
+import { TagService } from './../../services/tag.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { QuestionsService } from 'src/app/services/questions.service';
 
+export interface Messages {
+  type?: string;
+  content?: string[];
+}
 @Component({
   selector: 'app-new-question',
   templateUrl: './new-question.component.html',
@@ -10,26 +15,71 @@ import { QuestionsService } from 'src/app/services/questions.service';
 })
 export class NewQuestionComponent implements OnInit {
 
-  constructor(private editorService: TuiService) { }
+  @ViewChild('editor', { static: false })
+  editor: EditorComponent;
 
-  options: {
-    initialValue: `# Title of Project` ,
-    initialEditType: 'markdown',
-    previewStyle: 'vertical',
-    height: 'auto',
-    minHeight: '500px'
-  };
+  constructor(private questionsService: QuestionsService, private tagService: TagService) { }
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  tags: string[] = [];
+  selectedTags: string[] = [];
+  messages: Messages = { content: [] };
+  createQuestionRequest: CreateQuestionRequest = {};
+  loading = false;
 
   ngOnInit() {
+    this.loading = true;
+    this.tagService.getAllTags().subscribe(payload => {
+      this.tags = payload.map(tag => tag.value);
+      this.loading = false;
+    }, err => {
+      this.messages = { type: 'danger', content: this.parseErrors(err) };
+      this.loading = false;
+    });
+  }
+
+  assignQuestionContent(value: string) {
+    this.createQuestionRequest.content = value;
+  }
+
+  assignAnswerContent(value: string) {
+    this.createQuestionRequest.answer = value;
+  }
+
+  deleteTag(index: number) {
+    this.selectedTags.splice(index, 1);
+  }
+
+  getSelectedTags($event) {
+    this.selectedTags = Array.from(new Set($event));
+  }
+
+  clearErrors() {
+    this.messages = { content: [] };
   }
 
   saveQuestion() {
-    const questionInMarkdown = this.editorService.getMarkdown();
-    console.log(JSON.stringify(questionInMarkdown));
-    return 0;
+    this.loading = true;
+    this.clearErrors();
+    this.createQuestionRequest.tags = this.selectedTags.map(tag => tag);
+    this.questionsService.saveQuestion(this.createQuestionRequest).subscribe(payload => {
+      this.messages = { type: 'success', content: this.parseSuccess(payload) };
+      this.loading = false;
+      this.editor.clearMarkdowns();
+      this.selectedTags = [];
+    }, err => {
+      this.messages = { type: 'danger', content: this.parseErrors(err) };
+      this.loading = false;
+    });
+  }
+
+  private parseErrors(error: any): string[] {
+    if (error.error && error.error.errors) {
+      return error.error.errors.map(err => err.defaultMessage);
+    } else {
+      return [error.message];
+    }
+  }
+  private parseSuccess(payload: any): string[] {
+    return ['Question successfully saved with id ' + payload.id];
   }
 }
