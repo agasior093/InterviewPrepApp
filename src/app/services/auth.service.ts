@@ -28,10 +28,18 @@ export class AuthService {
     localStorage.removeItem('username');
   }
 
+  public setAuthentication(payload: any) {
+    localStorage.setItem('auth_token', payload.accessToken);
+  }
+
   public isAuthenticated(): boolean {
     // TODO - use jwt parser to get exp_date and validate token
     const token = localStorage.getItem('auth_token');
     return token && token.length > 0;
+  }
+
+  public getAuthToken() {
+    return localStorage.getItem('auth_token');
   }
 
   public getLoggedUsername(): string {
@@ -41,10 +49,5 @@ export class AuthService {
     // }
     return 'admin@gmail.com';
   }
-
-  public setAuthentication(payload: any) {
-    localStorage.setItem('auth_token', payload.accessToken);
-  }
-
 
 }
