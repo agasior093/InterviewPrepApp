@@ -1,3 +1,4 @@
+import { SignUpResponse } from './../model/signUpResponse';
 import { SignUpRequest } from './../model/signUpRequest';
 import { SignInRequest } from './../model/signInRequest';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
@@ -19,7 +20,7 @@ export class AuthService {
   }
 
   public signUp(signUpRequest: SignUpRequest) {
-    return this.http.post('http://localhost:8080/auth/signUp', signUpRequest, this.httpOptions);
+    return this.http.post<SignUpResponse>('http://localhost:8080/auth/signUp', signUpRequest, this.httpOptions);
   }
 
   public signOut() {

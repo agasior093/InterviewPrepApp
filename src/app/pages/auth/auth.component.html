@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-6 offset-3">
-    <ngb-alert [type]="'danger'" (close)="clearErrors()" *ngIf="errors.length > 0">
+    <ngb-alert [type]="messages.type" (close)="clearErrors()" *ngIf="messages.content?.length > 0">
       <ul>
-        <li *ngFor="let error of errors">{{error}}</li>
+        <li *ngFor="let message of messages.content">{{message}}</li>
       </ul>
     </ngb-alert>
     <app-loader [display]="loading"></app-loader>
@@ -10,13 +10,13 @@
       <li [ngbNavItem]="'signIn'">
         <a ngbNavLink>Sign In</a>
         <ng-template ngbNavContent>
-          <app-signin (errors)="setErrors($event)" (loading)="setLoader($event)"></app-signin>
+          <app-signin (messages)="setSignInMessages($event)" (loading)="setSignInLoader($event)"></app-signin>
         </ng-template>
       </li>
       <li [ngbNavItem]="'signUp'">
         <a ngbNavLink>Sign Up</a>
         <ng-template ngbNavContent>
-          <app-signup></app-signup>
+          <app-signup (messages)="setSignUpMessages($event)" (loading)="setSignUpLoader($event)"></app-signup>
         </ng-template>
       </li>
     </ul>

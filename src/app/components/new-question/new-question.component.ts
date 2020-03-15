@@ -1,3 +1,4 @@
+import { Messages } from './../../model/messages';
 import { EditorComponent } from './../editor/editor.component';
 import { CreateQuestionRequest } from './../../model/createQuestionRequest';
 import { TagService } from './../../services/tag.service';
@@ -5,10 +6,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { QuestionsService } from 'src/app/services/questions.service';
 import { parseErrors } from 'src/app/commons/response-utils';
 
-export interface Messages {
-  type?: string;
-  content?: string[];
-}
+
 @Component({
   selector: 'app-new-question',
   templateUrl: './new-question.component.html',

@@ -1,3 +1,4 @@
+import { Messages } from './../../model/messages';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -18,7 +19,7 @@ export class SigninComponent implements OnInit {
   submitted = false;
 
   @Output()
-  errors = new EventEmitter<string[]>();
+  messages = new EventEmitter<Messages>();
 
   @Output()
   loading = new EventEmitter<boolean>();
@@ -37,7 +38,7 @@ export class SigninComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.loading.emit(true);
-    this.errors.emit([]);
+    this.messages.emit({ content: [] });
 
     if (this.signInForm.invalid) {
       this.loading.emit(false);
@@ -47,14 +48,13 @@ export class SigninComponent implements OnInit {
     this.authService.signIn({ username: this.signInForm.get('username').value, password: this.signInForm.get('password').value })
       .subscribe(payload => {
         this.loading.emit(false);
-        this.errors.emit([]);
+        this.messages.emit({ content: [] });
         this.authService.setAuthentication(payload);
         this.router.navigate(['/']);
       }, err => {
         this.loading.emit(false);
-        this.errors.emit(parseErrors(err));
+        this.messages.emit({ type: 'danger', content: parseErrors(err) });
       });
-
   }
 
 }

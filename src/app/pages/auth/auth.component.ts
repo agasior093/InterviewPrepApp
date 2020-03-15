@@ -1,3 +1,4 @@
+import { Messages } from './../../model/messages';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,19 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
   active = 'signIn';
-  errors: string[] = [];
+  messages: Messages = { content: [] }
   loading = false;
 
-  setErrors(errors: string[]) {
-    this.errors = errors;
+  setSignInMessages(messages: Messages) {
+    this.messages = messages;
   }
 
-  setLoader(value: boolean) {
+  setSignInLoader(value: boolean) {
+    this.loading = value;
+  }
+
+  setSignUpMessages(messages: Messages) {
+    this.messages = messages;
+    if (messages.type === 'success') {
+      this.active = 'signIn';
+    }
+  }
+
+  setSignUpLoader(value: boolean) {
     this.loading = value;
   }
 
   clearErrors() {
-    this.errors = [];
+    this.messages = { content: [] };
   }
 
   constructor() { }
