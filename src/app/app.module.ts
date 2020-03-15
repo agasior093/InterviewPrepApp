@@ -1,3 +1,4 @@
+import { DefaultAuthGuard } from './commons/default.auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -7,11 +8,10 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { QuestionsComponent } from './pages/questions/questions.component';
 import { QuestionsListComponent } from './components/questions-list/questions-list.component';
-import { QuestionsContentComponent } from './components/questions-content/questions-content.component';
 import { TuiModule } from 'ngx-tui-editor';
 import { MarkdownModule } from 'ngx-markdown';
 
@@ -21,6 +21,10 @@ import { TagSubmenuComponent } from './components/tag-submenu/tag-submenu.compon
 import { EditorComponent } from './components/editor/editor.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { AuthComponent } from './pages/auth/auth.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { SignupComponent } from './components/signup/signup.component';
+
 
 @NgModule({
   declarations: [
@@ -28,16 +32,19 @@ import { LoaderComponent } from './components/loader/loader.component';
     NavbarComponent,
     QuestionsComponent,
     QuestionsListComponent,
-    QuestionsContentComponent,
     NewQuestionComponent,
     QuestionViewComponent,
     TagSubmenuComponent,
     EditorComponent,
     AutocompleteComponent,
-    LoaderComponent
+    LoaderComponent,
+    AuthComponent,
+    SigninComponent,
+    SignupComponent
   ],
   imports: [
     MarkdownModule.forRoot(),
+    ReactiveFormsModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
@@ -47,7 +54,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     HttpClientModule
   ],
   providers: [
-
+    DefaultAuthGuard
   ],
   bootstrap: [AppComponent]
 })

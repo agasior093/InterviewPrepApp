@@ -3,6 +3,7 @@ import { CreateQuestionRequest } from './../../model/createQuestionRequest';
 import { TagService } from './../../services/tag.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { QuestionsService } from 'src/app/services/questions.service';
+import { parseErrors } from 'src/app/commons/response-utils';
 
 export interface Messages {
   type?: string;
@@ -32,7 +33,7 @@ export class NewQuestionComponent implements OnInit {
       this.tags = payload.map(tag => tag.value);
       this.loading = false;
     }, err => {
-      this.messages = { type: 'danger', content: this.parseErrors(err) };
+      this.messages = { type: 'danger', content: parseErrors(err) };
       this.loading = false;
     });
   }
@@ -67,19 +68,13 @@ export class NewQuestionComponent implements OnInit {
       this.editor.clearMarkdowns();
       this.selectedTags = [];
     }, err => {
-      this.messages = { type: 'danger', content: this.parseErrors(err) };
+      this.messages = { type: 'danger', content: parseErrors(err) };
       this.loading = false;
     });
   }
 
-  private parseErrors(error: any): string[] {
-    if (error.error && error.error.errors) {
-      return error.error.errors.map(err => err.defaultMessage);
-    } else {
-      return [error.message];
-    }
-  }
   private parseSuccess(payload: any): string[] {
     return ['Question successfully saved with id ' + payload.id];
+
   }
 }

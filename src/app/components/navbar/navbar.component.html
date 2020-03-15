@@ -25,9 +25,26 @@
       </li>
 
     </ul>
-    <form class="form-inline my-2 my-sm-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search..." aria-label="Search">
-      <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
-    </form>
+
+
+    <ul class="navbar-nav" *ngIf="authService.isAuthenticated()">
+      <li class="nav-item active">
+        <a class="nav-link" href="/profile">
+          <fa-icon [icon]="faBell"></fa-icon>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/profile">
+          <fa-icon [icon]="faUser"></fa-icon>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <div style="margin-top: 12px"> {{authService.getLoggedUsername()}}</div>
+      <button class="btn btn-outline-warning left-margin" (click)="signOut()">Sign Out</button>
+    </ul>
+
+    <button class="btn btn-warning left-margin" (click)="navigateToAuth()" *ngIf="!authService.isAuthenticated()">Sign
+      In</button>
   </div>
 </nav>
