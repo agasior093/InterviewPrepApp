@@ -1,3 +1,4 @@
+import { UserInfo } from './../model/userInfo';
 import { SignUpResponse } from './../model/signUpResponse';
 import { SignUpRequest } from './../model/signUpRequest';
 import { SignInRequest } from './../model/signInRequest';
@@ -26,10 +27,21 @@ export class AuthService {
   public signOut() {
     localStorage.removeItem('auth_token');
     localStorage.removeItem('username');
+    localStorage.removeItem('user_image');
   }
 
+  // TODO - return valid object from observable and remove this
   public setAuthentication(payload: any) {
     localStorage.setItem('auth_token', payload.accessToken);
+  }
+
+  public setAuthenticationToken(token: string) {
+    localStorage.setItem('auth_token', token);
+  }
+
+  public setUserInfo(userInfo: UserInfo) {
+    localStorage.setItem('username', userInfo.username);
+    localStorage.setItem('user_image', userInfo.imageUrl);
   }
 
   public isAuthenticated(): boolean {
@@ -42,12 +54,17 @@ export class AuthService {
     return localStorage.getItem('auth_token');
   }
 
-  public getLoggedUsername(): string {
-    // TODO - we need API for that or we can parse jwt
-    // if (this.isAuthenticated()) {
-    //   return localStorage.getItem('username');
-    // }
-    return 'admin@gmail.com';
+  public getLoggedUserInfo(): UserInfo {
+    if (this.isAuthenticated()) {
+      return {
+        username:  localStorage.getItem('username'),
+        imageUrl:  localStorage.getItem('user_image')
+      } as UserInfo;
+    }
+  }
+
+  public loginWithFacebook() {
+    window.location.href = 'https://interview-prep-app.herokuapp.com/oauth2/authorize/facebook';
   }
 
 }

@@ -1,3 +1,4 @@
+import { FacebookComponent } from './components/facebook/facebook.component';
 import { QuestionsComponent } from './pages/questions/questions.component';
 import { DefaultAuthGuard } from './commons/default.auth.guard';
 import { AuthComponent } from './pages/auth/auth.component';
@@ -12,6 +13,8 @@ const routes: Routes = [
   {path: 'viewQuestions', component: QuestionsComponent},
   {path: 'newQuestion', component: NewQuestionComponent, canActivate: [DefaultAuthGuard]},
   {path: 'authenticate', component: AuthComponent},
+  {path: 'facebook/:token', component: FacebookComponent},
+
 ];
 
 @NgModule({

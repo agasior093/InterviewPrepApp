@@ -4,6 +4,8 @@ nav {
 
 img {
   max-width: 70px;
+  margin-right: 5px;
+  border-radius: 50%;
 }
 
 .left-margin {
