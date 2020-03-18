@@ -39,9 +39,16 @@
       </div>
       <div class="container">
         <div>
-          <button class="loginBtn loginBtn--facebook" (click)="loginWithFacebook()">
-            Login with Facebook
-          </button>
+          <a class="btn btn-block btn-social btn-facebook" (click)="signInWithFacebook()">
+            <span class="fa fa-facebook"></span> Sign in with Facebook
+          </a>
+        </div>
+      </div>
+      <div class="container">
+        <div>
+          <a class="btn btn-block btn-social btn-github" (click)="signInWithGithub()">
+            <span class="fa fa-github"></span> Sign in with Github
+          </a>
         </div>
       </div>
     </form>

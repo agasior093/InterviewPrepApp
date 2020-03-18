@@ -63,8 +63,12 @@ export class AuthService {
     }
   }
 
-  public loginWithFacebook() {
+  public signInWithFacebook() {
     window.location.href = 'https://interview-prep-app.herokuapp.com/oauth2/authorize/facebook';
+  }
+
+  public signInWithGithub() {
+    window.location.href = 'https://interview-prep-app.herokuapp.com/oauth2/authorize/github';
   }
 
 }

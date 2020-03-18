@@ -5,11 +5,11 @@ import { Component, OnInit } from '@angular/core';
 import { subscribeOn } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-facebook',
-  templateUrl: './facebook.component.html',
-  styleUrls: ['./facebook.component.css']
+  selector: 'app-social',
+  templateUrl: './social.component.html',
+  styleUrls: ['./social.component.css']
 })
-export class FacebookComponent implements OnInit {
+export class SocialComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService, private userService: UserService) { }
 

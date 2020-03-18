@@ -57,8 +57,12 @@ export class SigninComponent implements OnInit {
       });
   }
 
-  loginWithFacebook() {
-    this.authService.loginWithFacebook();
+  signInWithFacebook() {
+    this.authService.signInWithFacebook();
+  }
+
+  signInWithGithub() {
+    this.authService.signInWithGithub();
   }
 
 }
