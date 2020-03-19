@@ -1,18 +1,18 @@
+import { EnvironmentConfig } from './../../environmentConfig';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { httpOptions } from './httpOptions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TagService {
 
+  private readonly GET_TAG_URL = 'tag';
+
   constructor(private http: HttpClient) { }
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
   public getAllTags() {
-    return this.http.get<any>('http://localhost:8080/tag', this.httpOptions);
+    return this.http.get<any>(EnvironmentConfig.basePath + this.GET_TAG_URL, httpOptions());
   }
 }

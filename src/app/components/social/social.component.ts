@@ -2,7 +2,6 @@ import { UserService } from './../../services/user.service';
 import { AuthService } from './../../services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { subscribeOn } from 'rxjs/operators';
 
 @Component({
   selector: 'app-social',
@@ -15,14 +14,14 @@ export class SocialComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.authService.setAuthenticationToken(params['token']);
+      this.authService.setAuthentication(params['token']);
       this.initUserInfo();
     });
   }
 
   private initUserInfo() {
     this.userService.getUserInfo().subscribe(payload => {
-      this.authService.setUserInfo(payload);
+      this.authService.setLoggedUserInfo(payload);
       this.router.navigate(['/']);
     });
   }

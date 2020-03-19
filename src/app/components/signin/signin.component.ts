@@ -49,7 +49,7 @@ export class SigninComponent implements OnInit {
       .subscribe(payload => {
         this.loading.emit(false);
         this.messages.emit({ content: [] });
-        this.authService.setAuthentication(payload);
+        this.authService.setAuthentication(payload.accessToken);
         this.router.navigate(['/']);
       }, err => {
         this.loading.emit(false);

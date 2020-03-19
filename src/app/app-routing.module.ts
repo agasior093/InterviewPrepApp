@@ -1,3 +1,4 @@
+import { ProfileComponent } from './pages/profile/profile.component';
 import { SocialComponent } from './components/social/social.component';
 import { QuestionsComponent } from './pages/questions/questions.component';
 import { DefaultAuthGuard } from './commons/default.auth.guard';
@@ -10,6 +11,7 @@ import { QuestionViewComponent } from './components/question-view/question-view.
 
 const routes: Routes = [
   {path: '', component: QuestionsComponent},
+  {path: 'profile', component: ProfileComponent},
   {path: 'viewQuestions', component: QuestionsComponent},
   {path: 'newQuestion', component: NewQuestionComponent, canActivate: [DefaultAuthGuard]},
   {path: 'authenticate', component: AuthComponent},
