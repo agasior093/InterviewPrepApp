@@ -1,3 +1,4 @@
+import { UserService } from './user.service';
 import { EnvironmentConfig } from './../../environmentConfig';
 import { UserInfo } from './../model/userInfo';
 import { SignUpResponse } from './../model/signUpResponse';

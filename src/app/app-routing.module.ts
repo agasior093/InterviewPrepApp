@@ -11,12 +11,11 @@ import { QuestionViewComponent } from './components/question-view/question-view.
 
 const routes: Routes = [
   {path: '', component: QuestionsComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'viewQuestions', component: QuestionsComponent},
-  {path: 'newQuestion', component: NewQuestionComponent, canActivate: [DefaultAuthGuard]},
   {path: 'authenticate', component: AuthComponent},
   {path: 'social/:token', component: SocialComponent},
-
+  {path: 'viewQuestions', component: QuestionsComponent},
+  {path: 'profile', component: ProfileComponent, canActivate: [DefaultAuthGuard]},
+  {path: 'newQuestion', component: NewQuestionComponent, canActivate: [DefaultAuthGuard]}
 ];
 
 @NgModule({

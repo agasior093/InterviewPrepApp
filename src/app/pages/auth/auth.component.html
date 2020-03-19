@@ -5,7 +5,6 @@
         <li *ngFor="let message of messages.content">{{message}}</li>
       </ul>
     </ngb-alert>
-    <app-loader [display]="loading"></app-loader>
     <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
       <li [ngbNavItem]="'signIn'">
         <a ngbNavLink>Sign In</a>
@@ -20,7 +19,7 @@
         </ng-template>
       </li>
     </ul>
-
     <div [ngbNavOutlet]="nav" class="mt-2"></div>
+    <app-loader [display]="loading"></app-loader>
   </div>
 </div>

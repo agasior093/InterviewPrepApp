@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { Messages } from './../../model/messages';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
@@ -24,7 +25,7 @@ export class SigninComponent implements OnInit {
   @Output()
   loading = new EventEmitter<boolean>();
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.signInForm = this.formBuilder.group({
@@ -50,7 +51,7 @@ export class SigninComponent implements OnInit {
         this.loading.emit(false);
         this.messages.emit({ content: [] });
         this.authService.setAuthentication(payload.accessToken);
-        this.router.navigate(['/']);
+        this.initUserInfo();
       }, err => {
         this.loading.emit(false);
         this.messages.emit({ type: 'danger', content: parseErrors(err) });
@@ -65,6 +66,13 @@ export class SigninComponent implements OnInit {
   signInWithGithub() {
     this.loading.emit(true);
     this.authService.signInWithGithub();
+  }
+
+  private initUserInfo() {
+    this.userService.getUserInfo().subscribe(payload => {
+      this.authService.setLoggedUserInfo(payload);
+      this.router.navigate(['/']);
+    });
   }
 
 }
