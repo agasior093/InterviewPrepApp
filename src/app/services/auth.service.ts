@@ -60,8 +60,8 @@ export class AuthService {
   public getLoggedUserInfo(): UserInfo {
     if (this.isAuthenticated()) {
       return {
-        username: localStorage.getItem(this.USERNAME_KEY)
-        // imageUrl: localStorage.getItem(this.USER_IMAGE_KEY) // Not really necessary i guess
+        username: localStorage.getItem(this.USERNAME_KEY),
+        imageUrl: localStorage.getItem(this.USER_IMAGE_KEY)
       } as UserInfo;
     }
   }

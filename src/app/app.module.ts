@@ -27,6 +27,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SocialComponent } from './components/social/social.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ProfileViewComponent } from './components/profile-view/profile-view.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     SigninComponent,
     SignupComponent,
     SocialComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProfileViewComponent
   ],
   imports: [
     MarkdownModule.forRoot(),

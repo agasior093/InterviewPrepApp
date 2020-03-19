@@ -22,7 +22,7 @@ export class SocialComponent implements OnInit {
   private initUserInfo() {
     this.userService.getUserInfo().subscribe(payload => {
       this.authService.setLoggedUserInfo(payload);
-      this.router.navigate(['/']);
+      this.router.navigate(['/profile']);
     });
   }
 
