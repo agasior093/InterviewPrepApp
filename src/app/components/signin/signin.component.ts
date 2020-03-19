@@ -58,10 +58,12 @@ export class SigninComponent implements OnInit {
   }
 
   signInWithFacebook() {
+    this.loading.emit(true);
     this.authService.signInWithFacebook();
   }
 
   signInWithGithub() {
+    this.loading.emit(true);
     this.authService.signInWithGithub();
   }
 
