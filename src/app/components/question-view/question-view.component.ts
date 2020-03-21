@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 import { Question } from 'src/app/model/question';
 import { QuestionsService } from 'src/app/services/questions.service';
 import { Tag } from 'src/app/model/tag';
@@ -23,7 +23,7 @@ export class QuestionViewComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
-    this.filterByTags();
+    if (this.tagsToFilterBy) { this.filterByTags(); }
   }
 
   toggleAnswer(question: Question, param: boolean) {
@@ -31,9 +31,8 @@ export class QuestionViewComponent implements OnInit, OnChanges {
   }
 
   filterByTags() {
-    this.questions = this.questions.filter(question => {
-      const array: string[] = question.tags.map(tag => tag.value);
-      return _.intersection(array, Array.from(this.tagsToFilterBy)).length > 0;
-    });
+    this.questionService
+      .getQuestionsFilteredByTags(this.tagsToFilterBy)
+      .subscribe(payload => (this.questions = payload));
   }
 }

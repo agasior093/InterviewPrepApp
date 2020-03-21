@@ -1,7 +1,7 @@
-import { Question } from './../../model/question';
-import { QuestionsService } from './../../services/questions.service';
 import { Component, OnInit } from '@angular/core';
-import { Tag } from 'src/app/model/tag';
+import * as _ from 'lodash';
+
+import { Question } from './../../model/question';
 
 @Component({
   selector: 'app-questions',
@@ -19,7 +19,7 @@ export class QuestionsComponent implements OnInit {
   ngOnInit() { }
 
   onTagsFilterChange($event: Set<string>) {
-    this.tagsToFilterByQuestions = $event;
+    this.tagsToFilterByQuestions = _.clone($event);
   }
 
   onCategoryChange($event: string) {

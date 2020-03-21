@@ -28,6 +28,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { SocialComponent } from './components/social/social.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProfileViewComponent } from './components/profile-view/profile-view.component';
+import { QuestionsService } from './services/questions.service';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { ProfileViewComponent } from './components/profile-view/profile-view.com
   ],
   providers: [
     DefaultAuthGuard,
+    QuestionsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

@@ -1,5 +1,3 @@
-import { Tag } from './tag';
-
 export interface Question {
   title?: string;
   content?: string;
@@ -8,5 +6,5 @@ export interface Question {
   difficulty?: string;
   answer?: string;
   revealAnswer?: boolean;
-  tags?: Tag[];
+  tags?: string[];
 }
