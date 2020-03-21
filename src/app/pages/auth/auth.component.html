@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-6 offset-3">
+    <ngb-alert [type]="messages.type" (close)="clearErrors()" *ngIf="messages.content?.length > 0">
+      <ul>
+        <li *ngFor="let message of messages.content">{{message}}</li>
+      </ul>
+    </ngb-alert>
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+      <li [ngbNavItem]="'signIn'">
+        <a ngbNavLink>Sign In</a>
+        <ng-template ngbNavContent>
+          <app-signin (messages)="setSignInMessages($event)" (loading)="setSignInLoader($event)"></app-signin>
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="'signUp'">
+        <a ngbNavLink>Sign Up</a>
+        <ng-template ngbNavContent>
+          <app-signup (messages)="setSignUpMessages($event)" (loading)="setSignUpLoader($event)"></app-signup>
+        </ng-template>
+      </li>
+    </ul>
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+    <app-loader [display]="loading"></app-loader>
+  </div>
+</div>

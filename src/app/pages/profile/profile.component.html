@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-10 offset-1">
+
+    <ul ngbNav #nav="ngbNav" [(activeId)]="activeId" class="nav-tabs">
+      <li [ngbNavItem]="'profile'">
+        <a ngbNavLink>Profile</a>
+        <ng-template ngbNavContent>
+            <app-profile-view></app-profile-view>
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="'lists'">
+        <a ngbNavLink>My question lists <span class="badge badge-secondary">0</span></a>
+        <ng-template ngbNavContent>
+          <!-- TODO -->
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="'approved'">
+        <a ngbNavLink>My approved questions <span class="badge badge-secondary">0</span></a>
+        <ng-template ngbNavContent>
+          <!-- TODO -->
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="'pending'">
+        <a ngbNavLink>My pending questions <span class="badge badge-secondary">0</span></a>
+        <ng-template ngbNavContent>
+          <!-- TODO -->
+        </ng-template>
+      </li>
+    </ul>
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+  </div>
+</div>
