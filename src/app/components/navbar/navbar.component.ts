@@ -15,7 +15,8 @@ export class NavbarComponent implements OnInit {
   faUser = faUser;
   faBell = faBell;
 
-  loggedUser: string;
+  username: string;
+  imageUrl: string;
 
   constructor(private router: Router, public authService: AuthService) { }
 
@@ -28,6 +29,8 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/']);
   }
   ngOnInit() {
+    this.imageUrl = this.authService.getLoggedUserInfo().imageUrl;
+    this.username = this.authService.getLoggedUserInfo().username;
   }
 
 }

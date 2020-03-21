@@ -37,7 +37,8 @@
           <span class="sr-only">(current)</span>
         </a>
       </li>
-      <div style="margin-top: 12px"> {{authService.getLoggedUsername()}}</div>
+      <img *ngIf="imageUrl" src="{{imageUrl}}" height= "45" width="45">
+      <div style="margin-top: 12px">{{username}}</div>
       <button class="btn btn-outline-warning left-margin" (click)="signOut()">Sign Out</button>
     </ul>
 

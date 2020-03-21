@@ -1,3 +1,5 @@
+import { ProfileComponent } from './pages/profile/profile.component';
+import { SocialComponent } from './components/social/social.component';
 import { QuestionsComponent } from './pages/questions/questions.component';
 import { DefaultAuthGuard } from './commons/default.auth.guard';
 import { AuthComponent } from './pages/auth/auth.component';
@@ -9,9 +11,11 @@ import { QuestionViewComponent } from './components/question-view/question-view.
 
 const routes: Routes = [
   {path: '', component: QuestionsComponent},
-  {path: 'viewQuestions', component: QuestionsComponent},
-  {path: 'newQuestion', component: NewQuestionComponent, canActivate: [DefaultAuthGuard]},
   {path: 'authenticate', component: AuthComponent},
+  {path: 'social/:token', component: SocialComponent},
+  {path: 'viewQuestions', component: QuestionsComponent},
+  {path: 'profile', component: ProfileComponent, canActivate: [DefaultAuthGuard]},
+  {path: 'newQuestion', component: NewQuestionComponent, canActivate: [DefaultAuthGuard]}
 ];
 
 @NgModule({
