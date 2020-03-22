@@ -10,8 +10,10 @@ import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators'
 })
 export class AutocompleteComponent {
   @Input() items: string[];
+  @Input() outputItems: string[] = [];
+
   currentItem: string;
-  outputItems: string[] = [];
+
   @Output() outputItemsChanged = new EventEmitter<string[]>();
 
   @ViewChild('instance', { static: true }) instance: NgbTypeahead;
