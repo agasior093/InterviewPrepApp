@@ -48,7 +48,7 @@ export class NewQuestionComponent implements OnInit {
     this.selectedTags.splice(index, 1);
   }
 
-  getSelectedTags($event) {
+  getSelectedTags($event: Iterable<string>) {
     this.selectedTags = Array.from(new Set($event));
   }
 

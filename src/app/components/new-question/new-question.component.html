@@ -17,7 +17,7 @@
   <div class="container">
     <div class="row header-left">
       <div class="col-2">
-        <app-autocomplete [items]="tags" (outputItemsChanged)="getSelectedTags($event)"></app-autocomplete>
+        <app-autocomplete [items]="tags" (outputItemsChanged)="getSelectedTags($event)" [outputItems]="selectedTags"></app-autocomplete>
       </div>
       <div class="col-10">
         <h5><span *ngFor="let tag of selectedTags; let i = index" class="badge badge-secondary">
