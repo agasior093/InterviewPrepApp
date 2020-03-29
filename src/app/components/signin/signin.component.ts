@@ -25,7 +25,8 @@ export class SigninComponent implements OnInit {
   @Output()
   loading = new EventEmitter<boolean>();
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private userService: UserService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService,
+              private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.signInForm = this.formBuilder.group({

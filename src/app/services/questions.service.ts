@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { EnvironmentConfig } from './../../environmentConfig';
 import { CreateQuestionRequest } from './../model/createQuestionRequest';
 import { httpOptions } from './httpOptions';
+import { Question } from '../model/question';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class QuestionsService {
 
   public getQuestionsFilteredByTags(tags: Set<string>) {
     if (!tags || tags.size === 0) { return this.getAllQuestions(); }
-    return this.http.post<any>(EnvironmentConfig.basePath + this.QUESTION_URL +
+    return this.http.post<Question>(EnvironmentConfig.basePath + this.QUESTION_URL +
       this.FILTER_QUESTION_BY_TAGS_URL, JSON.stringify({ tagsToFilterBy: Array.from(tags) }), httpOptions());
   }
 }

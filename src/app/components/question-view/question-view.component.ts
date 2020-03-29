@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { parseErrors } from 'src/app/commons/response-utils';
+import { Messages } from 'src/app/model/messages';
 import { Question } from 'src/app/model/question';
 import { QuestionsService } from 'src/app/services/questions.service';
-import { Tag } from 'src/app/model/tag';
-import * as _ from 'lodash';
 
 @Component({
   selector: 'app-question-view',
@@ -13,6 +13,8 @@ export class QuestionViewComponent implements OnInit, OnChanges {
   questions: Question[] = [];
 
   @Input() tagsToFilterBy: Set<string>;
+
+  @Output() messages = new EventEmitter<Messages>();
 
   constructor(private questionService: QuestionsService) {}
 
@@ -33,6 +35,10 @@ export class QuestionViewComponent implements OnInit, OnChanges {
   filterByTags() {
     this.questionService
       .getQuestionsFilteredByTags(this.tagsToFilterBy)
-      .subscribe(payload => (this.questions = payload));
+      .subscribe(payload => {
+        this.questions = payload;
+      },  err => {
+        this.messages.emit({ type: 'danger', content: [err.message] });
+      });
   }
 }

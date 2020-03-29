@@ -1,3 +1,11 @@
 .btn-primary:not(:disabled):not(.disabled).active{
     background-color:#cc7832 !important; 
 }
+
+.card-header {
+  text-align: center !important;
+}
+
+.btn {
+  margin: 3px !important;
+}

@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
   active = 'signIn';
-  messages: Messages = { content: [] }
+  messages: Messages = { content: [] };
   loading = false;
 
   setSignInMessages(messages: Messages) {
