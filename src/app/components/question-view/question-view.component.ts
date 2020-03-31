@@ -11,6 +11,7 @@ import { QuestionsService } from 'src/app/services/questions.service';
 })
 export class QuestionViewComponent implements OnInit, OnChanges {
   questions: Question[] = [];
+  loading = false;
 
   @Input() tagsToFilterBy: Set<string>;
 
@@ -19,9 +20,16 @@ export class QuestionViewComponent implements OnInit, OnChanges {
   constructor(private questionService: QuestionsService) {}
 
   ngOnInit() {
+    this.loading = true;
     this.questionService
       .getAllQuestions()
-      .subscribe(payload => (this.questions = payload));
+      .subscribe(payload => {
+        this.questions = payload;
+        this.loading = false;
+      }, err => {
+        this.messages.emit({ type: 'danger', content: [err.message] });
+        this.loading = false;
+      });
   }
 
   ngOnChanges(): void {
@@ -33,12 +41,15 @@ export class QuestionViewComponent implements OnInit, OnChanges {
   }
 
   filterByTags() {
+    this.loading = true;
     this.questionService
       .getQuestionsFilteredByTags(this.tagsToFilterBy)
       .subscribe(payload => {
         this.questions = payload;
+        this.loading = false;
       },  err => {
         this.messages.emit({ type: 'danger', content: [err.message] });
+        this.loading = false;
       });
   }
 }

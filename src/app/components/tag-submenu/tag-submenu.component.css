@@ -9,3 +9,12 @@
 .btn {
   margin: 3px !important;
 }
+
+.btn-primary {
+  background-color: #444 !important;
+  border-color: #444 !important;
+}
+
+.btn-primary:hover {
+  color: orange !important;
+}
