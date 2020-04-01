@@ -1,6 +1,8 @@
-import { Question } from './../../model/question';
-import { QuestionsService } from './../../services/questions.service';
 import { Component, OnInit } from '@angular/core';
+import * as _ from 'lodash';
+
+import { Question } from './../../model/question';
+import { Messages } from 'src/app/model/messages';
 
 @Component({
   selector: 'app-questions',
@@ -11,19 +13,27 @@ export class QuestionsComponent implements OnInit {
 
   questions: Question[];
   selectedCategory: string;
-  filteredQuestions: Question[] = [];
+  tagsToFilterByQuestions: Set<string>;
+  messages: Messages = { content: [] };
 
-  constructor(private questionsService: QuestionsService) { }
 
-  ngOnInit() {
-    this.questionsService.getAllQuestions().subscribe(payload => this.questions = payload);
+  constructor() { }
+
+  ngOnInit() { }
+
+  setTagFilteringMessages(messages: Messages) {
+    this.messages = messages;
   }
 
-  onQuestionsFilterChange($event) {
-    this.filteredQuestions = $event;
+  clearErrors() {
+    this.messages = { content: [] };
   }
 
-  onCategoryChange($event) {
+  onTagsFilterChange($event: Set<string>) {
+    this.tagsToFilterByQuestions = _.clone($event);
+  }
+
+  onCategoryChange($event: string) {
     this.selectedCategory = $event;
   }
 }

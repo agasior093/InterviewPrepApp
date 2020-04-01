@@ -1,0 +1,18 @@
+.ow {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+
+.badge {
+  padding: 0.25em 0.6em !important;
+  margin: 1px !important;
+}
+
+.badge-secondary {
+  background-color: #644 !important;
+}
+
+.card {
+  margin-bottom: 0.7em !important;
+}

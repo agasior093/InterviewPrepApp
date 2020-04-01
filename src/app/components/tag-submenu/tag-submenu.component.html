@@ -1,7 +1,9 @@
-<div class="card" *ngFor="let tag of tags">
-    <div class="card-body">
-        <button type="button" class="btn btn-primary">
-            {{tag.value}} <span class="badge badge-light">{{tag.occurrences}}</span>
-          </button>
-    </div>
+
+<div class="card overflow-auto">
+  <div class="card-header">Categories</div>
+  <div class="btn-group-toggle">
+      <label class="btn-primary" ngbButtonLabel *ngFor="let tag of tags">
+        <input type="checkbox" ngbButton [(ngModel)]="tag.toggled" (click)="filterQuestions(tag)"> {{tag.value}}
+      </label>
   </div>
+</div>

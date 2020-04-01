@@ -1,8 +1,10 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
 import { EnvironmentConfig } from './../../environmentConfig';
 import { CreateQuestionRequest } from './../model/createQuestionRequest';
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { httpOptions } from './httpOptions';
+import { Question } from '../model/question';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +12,7 @@ import { httpOptions } from './httpOptions';
 export class QuestionsService {
 
   private readonly QUESTION_URL = 'question';
+  private readonly FILTER_QUESTION_BY_TAGS_URL = '/getQuestionsByTags';
 
   constructor(private http: HttpClient) { }
 
@@ -19,5 +22,11 @@ export class QuestionsService {
 
   public getAllQuestions() {
     return this.http.get<any>(EnvironmentConfig.basePath + this.QUESTION_URL, httpOptions());
+  }
+
+  public getQuestionsFilteredByTags(tags: Set<string>) {
+    if (!tags || tags.size === 0) { return this.getAllQuestions(); }
+    return this.http.post<Question>(EnvironmentConfig.basePath + this.QUESTION_URL +
+      this.FILTER_QUESTION_BY_TAGS_URL, JSON.stringify({ tagsToFilterBy: Array.from(tags) }), httpOptions());
   }
 }

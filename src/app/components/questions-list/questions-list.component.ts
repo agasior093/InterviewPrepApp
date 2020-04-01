@@ -30,8 +30,8 @@ export class QuestionsListComponent implements OnInit {
     return this.questions.filter(question => question.category === category).map(question => question.title);
   }
 
-  filterQuestions($event) {
-    console.log($event)
+  filterQuestions($event: { nextState: any; panelId: any; }) {
+    console.log($event);
     if ($event.nextState) {
       const category = $event.panelId;
       this.categoryChange.emit(category);
