@@ -1,12 +1,10 @@
 <app-loader [display]="loading"></app-loader>
 <div class="card" *ngFor="let question of questions">
   <div class="card-header" *ngIf="questions.length > 0">
-    <div *ngIf="question.tags?.length > 0">
-      <a href="#" class="badge badge-primary">{{question.tags[0]}}</a>
-      <a href="#" class="badge badge-secondary">{{question.tags[1]}}</a>
-      <a href="#" class="badge badge-success">{{question.tags[2]}}</a>
-      <a href="#" class="badge badge-danger">{{question.tags[3]}}</a>
-      <a href="#" class="badge badge-warning">{{question.tags[4]}}</a>
+    <div *ngIf="question.tags?.length > 0" class="row">
+      <div *ngFor="let tag of question.tags; let i = index">
+        <label class="badge badge-{{tagStyles[i]}}">{{question.tags[i]}}</label>
+      </div>
     </div>
   </div>
   <div class="card-body">

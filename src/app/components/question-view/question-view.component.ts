@@ -13,6 +13,8 @@ export class QuestionViewComponent implements OnInit, OnChanges {
   questions: Question[] = [];
   loading = false;
 
+  tagStyles: string[] = ['primary', 'secondary', 'success', 'danger', 'warning'];
+
   @Input() tagsToFilterBy: Set<string>;
 
   @Output() messages = new EventEmitter<Messages>();
