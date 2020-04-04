@@ -1,5 +1,5 @@
-.btn-primary:not(:disabled):not(.disabled).active{
-    background-color:#cc7832 !important; 
+.btn-primary:not(:disabled):not(.disabled).active {
+  background-color: #cc7832 !important;
 }
 
 .card-header {
@@ -17,4 +17,16 @@
 
 .btn-primary:hover {
   color: orange !important;
+}
+
+.btn:focus,
+.btn.focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
 }
