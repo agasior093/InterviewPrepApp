@@ -1,9 +1,24 @@
 <app-loader [display]="loading"></app-loader>
 <div class="card" *ngFor="let question of questions">
   <div class="card-header" *ngIf="questions.length > 0">
-    <div *ngIf="question.tags?.length > 0" class="row">
-      <div *ngFor="let tag of question.tags; let i = index">
-        <label class="badge badge-{{tagStyles[i]}}">{{question.tags[i]}}</label>
+    <div class="row">
+      <div class="col-sm-1">
+        <label>#{{question.id}}</label>
+      </div>
+      <div class="col-sm-1">
+        <fa-icon [icon]="faUsers" data-toggle="tooltip" data-placement="top" title="Numer of people who had this question during interview"></fa-icon>
+        <span class="badge badge-dark">5</span>
+      </div>
+      <div class="col-sm-2">
+        <fa-icon [icon]="faUser" data-toggle="tooltip" data-placement="top" title="Author of question"></fa-icon>
+        <label class="text-muted">{{question.userId}}</label>
+      </div>
+      <div class="col">
+        <div *ngIf="question.tags?.length > 0" class="row">
+          <div *ngFor="let tag of question.tags; let i = index">
+            <label class="badge badge-{{tagStyles[i]}}">{{question.tags[i]}}</label>
+          </div>
+        </div>
       </div>
     </div>
   </div>

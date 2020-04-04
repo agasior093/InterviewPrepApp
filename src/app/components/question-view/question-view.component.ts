@@ -3,6 +3,7 @@ import { parseErrors } from 'src/app/commons/response-utils';
 import { Messages } from 'src/app/model/messages';
 import { Question } from 'src/app/model/question';
 import { QuestionsService } from 'src/app/services/questions.service';
+import { faUsers, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-question-view',
@@ -10,16 +11,18 @@ import { QuestionsService } from 'src/app/services/questions.service';
   styleUrls: ['./question-view.component.css']
 })
 export class QuestionViewComponent implements OnInit, OnChanges {
+  faUsers = faUsers;
+  faUser = faUser;
   questions: Question[] = [];
   loading = false;
 
-  tagStyles: string[] = ['primary', 'secondary', 'success', 'danger', 'warning'];
+  tagStyles: string[] = ['dark', 'secondary', 'dark', 'secondary', 'dark'];
 
   @Input() tagsToFilterBy: Set<string>;
 
   @Output() messages = new EventEmitter<Messages>();
 
-  constructor(private questionService: QuestionsService) {}
+  constructor(private questionService: QuestionsService) { }
 
   ngOnInit() {
     this.loading = true;
@@ -49,7 +52,7 @@ export class QuestionViewComponent implements OnInit, OnChanges {
       .subscribe(payload => {
         this.questions = payload;
         this.loading = false;
-      },  err => {
+      }, err => {
         this.messages.emit({ type: 'danger', content: [err.message] });
         this.loading = false;
       });

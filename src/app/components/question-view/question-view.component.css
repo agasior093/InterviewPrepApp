@@ -10,9 +10,21 @@
 }
 
 .badge-secondary {
-  background-color: #da0593 !important;
+  background-color: #cc7832 !important;
 }
 
 .card {
   margin-bottom: 0.7em !important;
+}
+
+.card-header {
+  color: #cc7832 !important;
+}
+
+fa-icon {
+  margin-right: 3px !important;
+}
+
+fa-icon:hover {
+  opacity: 50% !important;
 }
