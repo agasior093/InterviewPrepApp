@@ -4,6 +4,7 @@
 
 .card-header {
   text-align: center !important;
+  margin-bottom: 0.25em;
 }
 
 .btn {
@@ -17,4 +18,9 @@
 
 .btn-primary:hover {
   color: orange !important;
+}
+
+.clear-section {
+  margin-top: 0.25em;
+  width: 100%;
 }
