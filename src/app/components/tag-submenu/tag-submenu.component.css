@@ -1,5 +1,5 @@
-.btn-primary:not(:disabled):not(.disabled).active{
-    background-color:#cc7832 !important; 
+.btn-primary:not(:disabled):not(.disabled).active {
+  background-color: #cc7832 !important;
 }
 
 .card-header {
@@ -23,4 +23,15 @@
 .clear-section {
   margin-top: 0.25em;
   width: 100%;
+}
+.btn:focus,
+.btn.focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
 }
