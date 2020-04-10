@@ -1,6 +1,5 @@
 .sticky-menu {
-  height: 25vh;
-  position: -webkit-sticky;
+  height: 75vh;
   position: sticky;
   top: 5px;
 }
