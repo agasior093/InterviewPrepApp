@@ -4,6 +4,12 @@
 
 .card-header {
   text-align: center !important;
+  margin-bottom: 0.25em;
+}
+
+.side-bar{
+  min-height: 100%;
+  min-width: auto !important;
 }
 
 .btn {
@@ -29,4 +35,23 @@
 .btn-primary.focus {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
+}
+
+.docked-button {
+  position: sticky;
+  bottom: 0;
+}
+
+.clear-button {
+  background-color: #cc7832 !important;
+  width: 100%;
+}
+
+.clear-button:hover {
+  color: #444 !important;
+}
+
+.scrollable{
+  overflow-y: auto;
+  height: 75vh;
 }

@@ -1,9 +1,13 @@
-
-<div class="card overflow-auto">
+<div class="side-bar">
   <div class="card-header">Categories</div>
-  <div class="btn-group-toggle">
-      <label class="btn-primary" ngbButtonLabel *ngFor="let tag of tags">
-        <input type="checkbox" ngbButton [(ngModel)]="tag.toggled" (click)="filterQuestions(tag)"> {{tag.value.toString().split('_').join(' ')}}
-      </label>
+  <div class="btn-group-toggle scrollable">
+    <label class="btn-primary" ngbButtonLabel *ngFor="let tag of tags">
+      <input type="checkbox" ngbButton [(ngModel)]="tag.toggled" (click)="filterQuestions(tag)">
+      {{tag.value.toString().split('_').join(' ')}}
+    </label>
+  </div>
+
+  <div class="docked-button">
+    <button class="btn btn-primary clear-button" ngbButton (click)="deleteTagsSelection()"> Clear selections </button>
   </div>
 </div>

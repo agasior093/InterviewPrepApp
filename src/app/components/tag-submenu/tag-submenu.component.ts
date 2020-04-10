@@ -31,4 +31,11 @@ export class TagSubmenuComponent implements OnInit {
 
     this.tagsToFilterByChanged.emit(this.tagsToFilterBy);
   }
+
+  deleteTagsSelection() {
+    this.tagsToFilterBy = new Set<string>();
+    this.tags.forEach(tag => tag.toggled = false);
+    // Emitting empty list of tags to filter, hits for all questions
+    this.tagsToFilterByChanged.emit(this.tagsToFilterBy);
+  }
 }
