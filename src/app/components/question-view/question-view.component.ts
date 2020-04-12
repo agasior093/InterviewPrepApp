@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
-import { parseErrors } from 'src/app/commons/response-utils';
 import { Messages } from 'src/app/model/messages';
 import { Question } from 'src/app/model/question';
 import { QuestionsService } from 'src/app/services/questions.service';

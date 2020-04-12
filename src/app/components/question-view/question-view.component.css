@@ -32,3 +32,7 @@ button:not(:disabled),
 [type='submit']:not(:disabled) {
   margin-bottom: 2rem;
 }
+
+.text-middle {
+  text-align: center;
+}
