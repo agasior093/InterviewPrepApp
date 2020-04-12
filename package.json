@@ -26,6 +26,7 @@
     "core-js": "2.6.4",
     "lodash": "^4.17.15",
     "ngx-markdown": "^8.0.0",
+    "ngx-order-pipe": "^2.0.4",
     "ngx-tui-editor": "^0.3.4",
     "prismjs": "^1.19.0",
     "rxjs": "~6.4.0",

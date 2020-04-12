@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angu
 import { Messages } from 'src/app/model/messages';
 import { Question } from 'src/app/model/question';
 import { QuestionsService } from 'src/app/services/questions.service';
+import { OrderPipe } from 'ngx-order-pipe';
 
 @Component({
   selector: 'app-question-view',
@@ -26,11 +27,20 @@ export class QuestionViewComponent implements OnInit, OnChanges {
       .getAllQuestions()
       .subscribe(payload => {
         this.questions = payload;
+        if (this.questions) { this.sortTags(); }
         this.loading = false;
       }, err => {
         this.messages.emit({ type: 'danger', content: [err.message] });
         this.loading = false;
       });
+  }
+
+  sortTags() {
+    this.questions.map(question => {
+      if (question.tags && question.tags.length > 0) {
+        question.tags.sort();
+      }
+    });
   }
 
   ngOnChanges(): void {
