@@ -63,7 +63,8 @@ export class EditorComponent implements OnInit, AfterViewInit {
   private createEditor(options: any): any {
     return Editor.factory(Object.assign({
       el: document.querySelector('.ngx-tui-editor'),
-      previewStyle: 'vertical'
+      previewStyle: 'vertical',
+      initialEditType: 'markdown'
     },
       options));
   }

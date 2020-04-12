@@ -1,7 +1,7 @@
-@import "~tui-editor/dist/tui-editor-contents";
-@import "~tui-editor/dist/tui-editor";
-@import "~codemirror/lib/codemirror";
-@import "~highlight.js/styles/github";
+@import '~tui-editor/dist/tui-editor-contents';
+@import '~tui-editor/dist/tui-editor';
+@import '~codemirror/lib/codemirror';
+@import '~highlight.js/styles/github';
 
 .header {
   border: 1px solid #cc7832;
@@ -12,4 +12,40 @@
 
 .ngx-tui-editor {
   margin-bottom: 5px;
+  /* background-color: #ffffff; */
+}
+
+.CodeMirror {
+  /* background-color: #c5c5c5 !important; */
+  color: #ffffff !important;
+}
+
+.cm-s-default .cm-header {
+  color: #bd4c4c !important;
+}
+
+.cm-s-default .cm-variable-2 {
+  color: #63b1ff;
+} 
+
+.tui-editor-contents p {
+  margin: 10px 0;
+  color: #fff;
+}
+
+.tui-editor-contents h1,
+.tui-editor-contents h2,
+.tui-editor-contents h3,
+.tui-editor-contents h4,
+.tui-editor-contents h5
+.tui-editor-contents h6 {
+  color: #fff;
+}
+
+.tui-editor-contents ul, .tui-editor-contents menu, .tui-editor-contents ol, .tui-editor-contents dir {
+  color: #fff;
+}
+
+.cm-s-default .cm-link {
+  color: #6060ff;
 }

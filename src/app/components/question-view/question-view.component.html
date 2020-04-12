@@ -8,13 +8,13 @@
     </div>
   </div>
   <div class="card-body">
-    <pre class="text-muted"> <markdown ngPreserveWhitespaces>{{question.content}}</markdown></pre>
+    <pre class="text-muted"> <markdown>{{question.content}}</markdown></pre>
     <button class="btn btn-secondary" *ngIf="!question.revealAnswer" (click)="toggleAnswer(question, true)">Show
       answer</button>
     <pre class="text-muted" *ngIf="question.revealAnswer">
         <li class="list-group-item">
           <button class ="btn btn-secondary" (click)="toggleAnswer(question, false)">Hide answer</button>
-          <markdown ngPreserveWhitespaces>{{question.answer}}</markdown>
+          <markdown>{{question.answer}}</markdown>
         </li>
       </pre>
   </div>

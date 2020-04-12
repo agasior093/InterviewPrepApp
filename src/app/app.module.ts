@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MarkdownModule } from 'ngx-markdown';
+import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { TuiModule } from 'ngx-tui-editor';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -48,7 +48,15 @@ import { QuestionsComponent } from './pages/questions/questions.component';
     ProfileViewComponent
   ],
   imports: [
-    MarkdownModule.forRoot(),
+    MarkdownModule.forRoot({
+      markedOptions: {
+        provide: MarkedOptions,
+        useValue: {
+          gfm: true,
+          breaks: true
+        }
+      },
+    }),
     ReactiveFormsModule,
     BrowserModule,
     FormsModule,
