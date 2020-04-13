@@ -1,3 +1,10 @@
+<div *ngIf="questions.length === 0 && !loading">
+  <div class="text-middle text-muted">
+    <br>
+    <h3>Couldn't find anything with selected tags</h3>
+  </div>
+</div>
+
 <app-loader [display]="loading"></app-loader>
 <div class="card" *ngFor="let question of questions">
   <div class="card-header" *ngIf="questions.length > 0">
@@ -17,12 +24,5 @@
           <markdown>{{question.answer}}</markdown>
         </li>
       </pre>
-  </div>
-</div>
-<div *ngIf="questions.length === 0">
-  <div class="card">
-    <div class="card-body text-middle">
-      <h2>Couldn't find anything with selected tags</h2>
-    </div>
   </div>
 </div>
