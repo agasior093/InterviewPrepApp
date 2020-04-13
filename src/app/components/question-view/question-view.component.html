@@ -1,20 +1,27 @@
+<div *ngIf="questions.length === 0 && !loading">
+  <div class="text-middle text-muted">
+    <br>
+    <h3>Couldn't find anything with selected tags</h3>
+  </div>
+</div>
+
 <app-loader [display]="loading"></app-loader>
 <div class="card" *ngFor="let question of questions">
   <div class="card-header" *ngIf="questions.length > 0">
     <div *ngIf="question.tags?.length > 0" class="row">
       <div *ngFor="let tag of question.tags; let i = index">
-        <label class="badge badge-{{tagStyles[i]}}">{{question.tags[i]}}</label>
+        <label class="badge badge-{{tagStyles[i]}}">{{question.tags[i].toString().split('_').join(' ')}}</label>
       </div>
     </div>
   </div>
   <div class="card-body">
-    <pre class="text-muted"> <markdown ngPreserveWhitespaces>{{question.content}}</markdown></pre>
+    <pre class="text-muted"> <markdown>{{question.content}}</markdown></pre>
     <button class="btn btn-secondary" *ngIf="!question.revealAnswer" (click)="toggleAnswer(question, true)">Show
       answer</button>
     <pre class="text-muted" *ngIf="question.revealAnswer">
         <li class="list-group-item">
           <button class ="btn btn-secondary" (click)="toggleAnswer(question, false)">Hide answer</button>
-          <markdown ngPreserveWhitespaces>{{question.answer}}</markdown>
+          <markdown>{{question.answer}}</markdown>
         </li>
       </pre>
   </div>
